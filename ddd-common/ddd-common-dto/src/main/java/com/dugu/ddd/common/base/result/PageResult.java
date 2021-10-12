@@ -1,6 +1,8 @@
-package com.dugu.ddd.common.base.result.client;
+package com.dugu.ddd.common.base.result;
 
 import com.dugu.ddd.common.utils.DDDUtil;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,6 +13,8 @@ import java.util.List;
  * @Author cihun
  * @Date 2021-10-07 9:26 下午
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@ToString(callSuper = true)
 public class PageResult<T> extends BaseResult implements Serializable {
     private static final long serialVersionUID = -4274392560170032211L;
     /**
@@ -36,6 +40,7 @@ public class PageResult<T> extends BaseResult implements Serializable {
         result.setPageIndex(pageIndex);
         result.setPageSize(pageSize);
         result.setTotalCount(totalCount);
+        result.setData(data);
         return result;
     }
 
@@ -102,6 +107,5 @@ public class PageResult<T> extends BaseResult implements Serializable {
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
-
 
 }

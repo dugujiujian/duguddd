@@ -24,7 +24,7 @@
         <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
 
         <!-- outer toolkit -->
-        <lombok.version>1.16.18</lombok.version>
+        <lombok.version>1.18.22</lombok.version>
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
         <commons.io.version>2.4</commons.io.version>
         <commons.collections.version>3.2</commons.collections.version>
@@ -32,6 +32,7 @@
         <commons.codec.version>1.10</commons.codec.version>
         <commons.lang3.version>3.6</commons.lang3.version>
         <guava.version>23.0</guava.version>
+        <jackson-databind.version>2.9.7</jackson-databind.version>
         <!-- 测试工具 -->
         <junit.vesion>4.9</junit.vesion>
     </properties>
@@ -144,6 +145,12 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-databind.version}</version>
             </dependency>
 
 

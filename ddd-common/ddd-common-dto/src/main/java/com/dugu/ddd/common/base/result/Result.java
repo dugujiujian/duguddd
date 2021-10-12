@@ -1,4 +1,6 @@
-package com.dugu.ddd.common.base.result.client;
+package com.dugu.ddd.common.base.result;
+
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -8,6 +10,7 @@ import java.io.Serializable;
  * @author cihun
  * @date 2021-10-06
  */
+@ToString(callSuper = true)
 public class Result<T> extends BaseResult implements Serializable {
 
     private static final long serialVersionUID = 185581488616744992L;
@@ -95,12 +98,5 @@ public class Result<T> extends BaseResult implements Serializable {
 
     public void setData(T data) {
         this.data = data;
-    }
-
-    @Override
-    public String toString() {
-        return "Result{" +
-                "data=" + data +
-                "} " + super.toString();
     }
 }

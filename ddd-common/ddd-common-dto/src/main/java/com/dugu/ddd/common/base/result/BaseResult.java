@@ -1,9 +1,14 @@
-package com.dugu.ddd.common.base.result.client;
+package com.dugu.ddd.common.base.result;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.ToString;
 
 /**
  * @Author cihun
  * @Date 2021-10-07 9:29 下午
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@ToString
 public class BaseResult {
 
     /**
@@ -44,12 +49,12 @@ public class BaseResult {
     }
 
 
-    @Override
-    public String toString() {
-        return "BaseResult{" +
-                "success=" + success +
-                ", errorCode='" + errorCode + '\'' +
-                ", message='" + message + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "BaseResult{" +
+//                "success=" + success +
+//                ", errorCode='" + errorCode + '\'' +
+//                ", message='" + message + '\'' +
+//                '}';
+//    }
 }

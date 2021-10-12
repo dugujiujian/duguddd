@@ -1,4 +1,4 @@
-package com.dugu.ddd.common.base.result.client;
+package com.dugu.ddd.common.base.result;
 
 
 import org.junit.Assert;
