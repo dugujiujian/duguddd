@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class BaseDTOWithId extends BaseDTO implements Serializable {
     private static final long serialVersionUID = -6689437959342155091L;
     private Long id;

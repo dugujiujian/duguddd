@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class BaseDTOWithTime extends BaseDTOWithId {
     private static final long serialVersionUID = 5924508187864873059L;
     /**
