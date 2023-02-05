@@ -33,6 +33,9 @@
         <commons.lang3.version>3.6</commons.lang3.version>
         <guava.version>23.0</guava.version>
         <jackson-databind.version>2.9.7</jackson-databind.version>
+        <!-- mw -->
+        <redisson.version>3.16.0</redisson.version>
+        <redisson-spring-boot-starter.version>3.17.6</redisson-spring-boot-starter.version>
         <!-- 测试工具 -->
         <junit.vesion>4.9</junit.vesion>
     </properties>
@@ -49,26 +52,11 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.dugu.ddd</groupId>
-                <artifactId>ddd-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dugu.ddd</groupId>
-                <artifactId>ddd-controller</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+
             <!-- application modules -->
             <dependency>
                 <groupId>com.dugu.ddd</groupId>
                 <artifactId>ddd-application</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <!-- extra -->
-            <dependency>
-                <groupId>com.dugu.ddd</groupId>
-                <artifactId>ddd-common-dto</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -76,6 +64,26 @@
                 <artifactId>ddd-start</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <!-- interfaces -->
+            <dependency>
+                <groupId>com.dugu.ddd</groupId>
+                <artifactId>ddd-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dugu.ddd</groupId>
+                <artifactId>ddd-common-dto</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- infrastructure -->
+            <dependency>
+                <groupId>com.dugu.ddd</groupId>
+                <artifactId>ddd-controller</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
 
             <!-- spring boot -->
             <dependency>
@@ -151,6 +159,17 @@
                 <version>${jackson-databind.version}</version>
             </dependency>
 
+            <!-- ############# middleware ################ -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-spring-boot-starter.version}</version>
+            </dependency>
 
             <!-- 测试工具 -->
             <dependency>

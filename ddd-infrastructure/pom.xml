@@ -6,8 +6,23 @@
         <groupId>com.dugu.ddd</groupId>
         <artifactId>main</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
 
     <artifactId>ddd-infrastructure</artifactId>
+
+
+    <modules>
+        <module>ddd-infra-middleware</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>
