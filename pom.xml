@@ -56,7 +56,7 @@
             <!-- application modules -->
             <dependency>
                 <groupId>com.dugu.ddd</groupId>
-                <artifactId>ddd-application</artifactId>
+                <artifactId>ddd-appliaction</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -68,7 +68,7 @@
             <!-- interfaces -->
             <dependency>
                 <groupId>com.dugu.ddd</groupId>
-                <artifactId>ddd-client</artifactId>
+                <artifactId>ddd-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
