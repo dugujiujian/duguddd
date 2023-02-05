@@ -15,7 +15,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>ddd-client</module>
         <module>ddd-controller</module>
     </modules>
 

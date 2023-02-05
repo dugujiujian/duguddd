@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * 分页结果返回
  *
- * @Author cihun
- * @Date 2021-10-07 9:26 下午
+ * @author cihun
+ * @date 2021-10-07 9:26 下午
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ToString(callSuper = true)
@@ -47,9 +47,9 @@ public class PageResult<T> extends BaseResult implements Serializable {
     /**
      * 分页（无数据）
      *
-     * @param pageSize
-     * @param <T>
-     * @return
+     * @param pageSize 页码
+     * @param <T>      返回对象
+     * @return 对象
      */
     public static <T> PageResult<T> success(Integer pageSize) {
         PageResult<T> result = new PageResult<>();
@@ -63,8 +63,8 @@ public class PageResult<T> extends BaseResult implements Serializable {
     /**
      * 分页（无数据,默认10条）
      *
-     * @param <T>
-     * @return
+     * @param <T> 返回对象
+     * @return 对象
      */
     public static <T> PageResult<T> success() {
         PageResult<T> result = new PageResult<>();

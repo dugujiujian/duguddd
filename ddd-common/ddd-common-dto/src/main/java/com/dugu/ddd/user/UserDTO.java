@@ -8,8 +8,8 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- * @Author cihun
- * @Date 2021-10-09 7:18 下午
+ * @author cihun
+ * @date 2021-10-09 7:18 下午
  */
 @Getter
 @Setter

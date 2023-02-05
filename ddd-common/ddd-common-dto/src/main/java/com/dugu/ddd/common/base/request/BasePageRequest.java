@@ -4,8 +4,8 @@ import com.dugu.ddd.common.utils.DDDUtil;
 import lombok.ToString;
 
 /**
- * @Author cihun
- * @Date 2021-10-09 7:46 下午
+ * @author cihun
+ * @date 2021-10-09 7:46 下午
  */
 @ToString(callSuper = true)
 public class BasePageRequest extends BaseRequest {
