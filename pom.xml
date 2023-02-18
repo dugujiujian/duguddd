@@ -38,6 +38,7 @@
         <redisson-spring-boot-starter.version>3.17.6</redisson-spring-boot-starter.version>
         <!-- 测试工具 -->
         <junit.vesion>4.9</junit.vesion>
+        <mybatis-plus-version>3.5.2</mybatis-plus-version>
     </properties>
 
     <modules>
@@ -169,6 +170,11 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-version}</version>
             </dependency>
 
             <!-- 测试工具 -->
