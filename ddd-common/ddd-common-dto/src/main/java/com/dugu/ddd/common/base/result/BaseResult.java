@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.ToString;
 
 /**
- * @Author cihun
- * @Date 2021-10-07 9:29 下午
+ * @author cihun
+ * @date 2021-10-07 9:29 下午
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ToString

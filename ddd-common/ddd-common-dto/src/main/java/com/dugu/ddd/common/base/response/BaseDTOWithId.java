@@ -9,8 +9,8 @@ import java.io.Serializable;
 /**
  * 基础输出(带ID)
  *
- * @Author cihun
- * @Date 2021-10-09 7:30 下午
+ * @author cihun
+ * @date 2021-10-09 7:30 下午
  */
 @Getter
 @Setter

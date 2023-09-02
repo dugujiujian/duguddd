@@ -1,8 +1,8 @@
 package com.dugu.ddd.common.utils;
 
 /**
- * @Author cihun
- * @Date 2021-10-09 6:53 下午
+ * @author cihun
+ * @date 2021-10-09 6:53 下午
  */
 public interface DDDUtil {
 

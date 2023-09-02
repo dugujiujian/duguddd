@@ -8,8 +8,8 @@ import java.io.Serializable;
 /**
  * 基础请求
  *
- * @Author cihun
- * @Date 2021-10-09 7:26 下午
+ * @author cihun
+ * @date 2021-10-09 7:26 下午
  */
 @ToString
 public class BaseRequest implements Serializable {
