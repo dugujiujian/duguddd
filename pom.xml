@@ -44,7 +44,7 @@
         <redisson.version>3.16.0</redisson.version>
         <redisson-spring-boot-starter.version>3.17.6</redisson-spring-boot-starter.version>
         <!-- 测试工具 -->
-        <junit.vesion>4.9</junit.vesion>
+        <junit.vesion>4.12</junit.vesion>
         <mybatis-plus-version>3.5.2</mybatis-plus-version>
     </properties>
 
@@ -91,6 +91,13 @@
                 <artifactId>ddd-controller</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.dugu.ddd</groupId>
+                <artifactId>ddd-infra-middleware</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
 
             <!-- outer toolkit -->
             <dependency>

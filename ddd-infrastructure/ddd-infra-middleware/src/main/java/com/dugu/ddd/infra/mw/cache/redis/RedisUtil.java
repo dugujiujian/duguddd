@@ -1,4 +1,4 @@
-package com.dugu.ddd.cache.redis;
+package com.dugu.ddd.infra.mw.cache.redis;
 
 import com.google.common.collect.Lists;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -61,7 +61,8 @@ public class RedisUtil {
      */
     public boolean hasKey(String key) {
         try {
-            return redisTemplate.hasKey(key);
+            Boolean r = redisTemplate.hasKey(key);
+            return r != null && r;
         } catch (Exception e) {
             return false;
         }
@@ -567,9 +568,9 @@ public class RedisUtil {
     /**
      * 添加一个元素
      *
-     * @param key
-     * @param value
-     * @param score
+     * @param key   key
+     * @param value 值
+     * @param score 分数
      */
     public void zAdd(String key, Object value, double score) {
         redisTemplate.opsForZSet().add(key, value, score);
@@ -591,9 +592,9 @@ public class RedisUtil {
     /**
      * 判断value在zset中的排名
      *
-     * @param key
-     * @param value
-     * @return
+     * @param key   key
+     * @param value 值
+     * @return 位置
      */
     public Long zRank(String key, Object value) {
         Long index = redisTemplate.opsForZSet().rank(key, value);
@@ -605,11 +606,12 @@ public class RedisUtil {
      * 查询集合中指定顺序的值和score
      * <p>
      * （start=0 & end = -1）表示获取全部的集合内容
+     * </p>
      *
-     * @param key
-     * @param start
-     * @param end
-     * @return
+     * @param key   key
+     * @param start 开始位置
+     * @param end   结束位置
+     * @return set 对象
      */
     public Set<Object> zRangeWithScore(String key, long start, long end) {
         return redisTemplate.opsForZSet().rangeByScore(key, start, end);
