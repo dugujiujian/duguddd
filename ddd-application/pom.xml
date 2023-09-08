@@ -11,7 +11,7 @@
     </parent>
     <packaging>jar</packaging>
 
-    <artifactId>ddd-appliaction</artifactId>
+    <artifactId>ddd-application</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
 </project>

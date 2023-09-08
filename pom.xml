@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -25,17 +24,18 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- maven plugin -->
         <maven-compiler-plugin>3.7.0</maven-compiler-plugin>
-        <maven-resources-plugin>3.0.2</maven-resources-plugin>
+        <maven-resources-plugin>3.1.0</maven-resources-plugin>
 
         <!--spring-->
 
         <!-- outer toolkit -->
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <lombok.version>1.18.22</lombok.version>
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
         <commons.io.version>2.4</commons.io.version>
         <commons.collections.version>3.2</commons.collections.version>
-        <commons.beanutils.version> 1.9.2</commons.beanutils.version>
-        <commons.codec.version>1.10</commons.codec.version>
+        <commons.beanutils.version>1.9.4</commons.beanutils.version>
+        <commons.codec.version>1.15</commons.codec.version>
         <commons.lang3.version>3.6</commons.lang3.version>
         <guava.version>30.1-jre</guava.version>
         <jackson-databind.version>2.12.3</jackson-databind.version>
@@ -43,9 +43,14 @@
         <!-- mw -->
         <redisson.version>3.16.0</redisson.version>
         <redisson-spring-boot-starter.version>3.17.6</redisson-spring-boot-starter.version>
+        <mybatis-plus.version>3.5.1</mybatis-plus.version>
+        <mysql-connector-java.version>8.0.25</mysql-connector-java.version>
+        <druid-spring-boot-starter.version>1.2.6</druid-spring-boot-starter.version>
+        <p6spy.version>3.8.2</p6spy.version>
+        <xxl-job-core.version>2.3.0</xxl-job-core.version>
+        <cola-statemachine.version>4.3.1</cola-statemachine.version>
         <!-- 测试工具 -->
         <junit.vesion>4.12</junit.vesion>
-        <mybatis-plus-version>3.5.2</mybatis-plus-version>
     </properties>
 
     <modules>
@@ -58,22 +63,25 @@
         <module>ddd-common</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
 
             <!-- application modules -->
             <dependency>
                 <groupId>com.dugu.ddd</groupId>
-                <artifactId>ddd-appliaction</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dugu.ddd</groupId>
-                <artifactId>ddd-start</artifactId>
+                <artifactId>ddd-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
-            <!-- interfaces -->
             <dependency>
                 <groupId>com.dugu.ddd</groupId>
                 <artifactId>ddd-api</artifactId>
@@ -84,8 +92,19 @@
                 <artifactId>ddd-common-dto</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
+            <!--domain -->
+            <dependency>
+                <groupId>com.dugu.ddd</groupId>
+                <artifactId>ddd-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!-- infrastructure -->
+            <dependency>
+                <groupId>com.dugu.ddd</groupId>
+                <artifactId>ddd-infrastructure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- interfaces -->
             <dependency>
                 <groupId>com.dugu.ddd</groupId>
                 <artifactId>ddd-controller</artifactId>
@@ -94,10 +113,9 @@
 
             <dependency>
                 <groupId>com.dugu.ddd</groupId>
-                <artifactId>ddd-infra-middleware</artifactId>
+                <artifactId>ddd-start</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
 
             <!-- outer toolkit -->
             <dependency>
@@ -110,6 +128,12 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-jdk8</artifactId>
                 <version>${org.mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cola</groupId>
+                <artifactId>cola-component-statemachine</artifactId>
+                <version>${cola-statemachine.version}</version>
             </dependency>
             <!-- ******************************* 常用依赖库 ********************************** -->
             <!-- 针对开发IO流功能的工具类库 -->
@@ -180,8 +204,34 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus-version}</version>
+                <version>${mybatis-plus.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter-test</artifactId>
+                <version>3.4.1</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.baomidou</groupId>-->
+<!--                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
+<!--                <version>${mybatis-plus-version}</version>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot-starter.version}</version>
+            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.xuxueli</groupId>-->
+<!--                <artifactId>xxl-job-core</artifactId>-->
+<!--                <version>${xxl-job-core.version}</version>-->
+<!--            </dependency>-->
 
             <!-- 测试工具 -->
             <dependency>
