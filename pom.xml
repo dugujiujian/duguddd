@@ -25,7 +25,7 @@
         <!-- maven plugin -->
         <maven-compiler-plugin>3.7.0</maven-compiler-plugin>
         <maven-resources-plugin>3.1.0</maven-resources-plugin>
-
+        <pring-boot-maven-plugin.verion>2.3.7.RELEASE</pring-boot-maven-plugin.verion>
         <!--spring-->
 
         <!-- outer toolkit -->
@@ -43,7 +43,7 @@
         <!-- mw -->
         <redisson.version>3.16.0</redisson.version>
         <redisson-spring-boot-starter.version>3.17.6</redisson-spring-boot-starter.version>
-        <mybatis-plus.version>3.5.1</mybatis-plus.version>
+        <mybatis-plus.version>3.5.3</mybatis-plus.version>
         <mysql-connector-java.version>8.0.25</mysql-connector-java.version>
         <druid-spring-boot-starter.version>1.2.6</druid-spring-boot-starter.version>
         <p6spy.version>3.8.2</p6spy.version>
@@ -253,7 +253,22 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${pring-boot-maven-plugin.verion}</version>
+                <configuration>
+                    <mainClass>com.dugu.ddd.Application</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
