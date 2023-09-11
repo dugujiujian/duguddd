@@ -1,15 +1,6 @@
 package com.dugu.ddd.infra.mw.database;
 
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
-import com.dugu.ddd.infra.mw.database.enums.DatabaseCommonEnum;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-
-import javax.sql.DataSource;
 
 /**
  * 数据源配置
@@ -18,28 +9,28 @@ import javax.sql.DataSource;
  * @date 2023-09-11 17:08
  */
 @Slf4j
-@Configuration
+//@Configuration
 public class DataSourceConfiguration {
-
-    @Value("${spring.datasource.druid.defaultDS}")
-    private String defaultDs;
-
-    @Bean(name = "duguDataSource")
-    @Primary
-    @ConfigurationProperties(prefix = "spring.datasource.dugu")
-    public DataSource duguDataSource() {
-        DataSource druidDataSource = DruidDataSourceBuilder.create().build();
-        DbContextHolder.addDataSource(DatabaseCommonEnum.DsType.DS_DUGU.getValue(), druidDataSource);
-        return druidDataSource;
-    }
-
-    @Bean(name = "dugutDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.dugut")
-    public DataSource dugutDataSource() {
-        DataSource druidDataSource = DruidDataSourceBuilder.create().build();
-        DbContextHolder.addDataSource(DatabaseCommonEnum.DsType.DS_DUGUT.getValue(), druidDataSource);
-        return druidDataSource;
-    }
+//
+//    @Value("${spring.datasource.druid.defaultDS}")
+//    private String defaultDs;
+//
+//    @Primary
+//    @Bean(name = "duguDataSource")
+//    @ConfigurationProperties(prefix = "spring.datasource.dugu")
+//    public DataSource duguDataSource() {
+//        DataSource druidDataSource = DruidDataSourceBuilder.create().build();
+//        //DbContextHolder.addDataSource(DatabaseCommonEnum.DsType.DS_DUGU.getValue(), druidDataSource);
+//        return druidDataSource;
+//    }
+//
+//    @Bean(name = "dugutDataSource")
+//    @ConfigurationProperties(prefix = "spring.datasource.dugut")
+//    public DataSource dugutDataSource() {
+//        DataSource druidDataSource = DruidDataSourceBuilder.create().build();
+//       // DbContextHolder.addDataSource(DatabaseCommonEnum.DsType.DS_DUGUT.getValue(), druidDataSource);
+//        return druidDataSource;
+//    }
 
 //    @Bean(name = "dynamicDataSource")
 //    public DynamicDataSource dynamicDataSource(@Qualifier("duguDataSource") DataSource duguDataSource, @Qualifier("dugutDataSource") DataSource dugutDataSource) {

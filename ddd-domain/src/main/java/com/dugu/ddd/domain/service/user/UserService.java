@@ -5,4 +5,6 @@ package com.dugu.ddd.domain.service.user;
  * @date 2023-09-08 11:17
  */
 public interface UserService {
+
+    void transactionTest();
 }

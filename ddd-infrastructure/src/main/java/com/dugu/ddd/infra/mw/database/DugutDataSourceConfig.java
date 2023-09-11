@@ -1,5 +1,6 @@
 package com.dugu.ddd.infra.mw.database;
 
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -7,7 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -21,12 +22,17 @@ import javax.sql.DataSource;
  */
 
 @Configuration
-@AutoConfigureAfter({DataSourceConfiguration.class})
 @MapperScan(basePackages = "com.dugu.ddd.infra.mw.database.mapper.dugut", sqlSessionTemplateRef = "dugutSqlSessionTemplate")
 public class DugutDataSourceConfig {
 
     @Autowired
     private MybatisConfiguration mybatisConfiguration;
+
+    @Bean(name = "dugutDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.dugut")
+    public DataSource dugutDataSource() {
+        return DruidDataSourceBuilder.create().build();
+    }
 
     @Bean(name = "dugutSqlSessionFactory")
     public SqlSessionFactory dugutSqlSessionFactory(@Qualifier("dugutDataSource") DataSource dataSource) throws Exception {
