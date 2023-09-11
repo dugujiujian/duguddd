@@ -1,9 +1,12 @@
-package com.dugu.ddd.infra.mw.database.mysql;
+package com.dugu.ddd.infra.mw.database;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -16,9 +19,13 @@ import java.util.Collections;
  * @author cihun
  * @date 2023-09-07 14:50
  */
+@Slf4j
 @Configuration
 @EnableConfigurationProperties(DataSourceProperties.class)
+@AutoConfigureAfter({DataSourceConfiguration.class})
+@MapperScan(basePackages = {"com.dugu.ddd.infra.mw.database.mapper.dugu", "com.dugu.ddd.infra.mw.database.mapper.dugut"})
 public class MybatisPlusConfig {
+
     @Bean
     public PaginationInnerInterceptor paginationInnerInterceptor() {
         PaginationInnerInterceptor paginationInterceptor = new PaginationInnerInterceptor();
@@ -43,6 +50,4 @@ public class MybatisPlusConfig {
     public MybatisConfiguration mybatisConfiguration() {
         return new MybatisConfiguration();
     }
-
-
 }

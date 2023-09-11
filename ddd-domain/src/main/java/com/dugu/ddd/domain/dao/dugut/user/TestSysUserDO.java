@@ -1,6 +1,7 @@
 package com.dugu.ddd.domain.dao.dugut.user;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -14,7 +15,7 @@ import lombok.Data;
 @Data
 @TableName("test_sys_user")
 public class TestSysUserDO {
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Long id;
     private String name;
 }

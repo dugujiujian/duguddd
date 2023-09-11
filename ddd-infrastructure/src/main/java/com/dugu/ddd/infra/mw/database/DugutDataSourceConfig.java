@@ -1,12 +1,13 @@
-package com.dugu.ddd.infra.mw.database.mysql;
+package com.dugu.ddd.infra.mw.database;
 
-import com.alibaba.druid.pool.DruidDataSource;
+import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -20,34 +21,18 @@ import javax.sql.DataSource;
  */
 
 @Configuration
-@MapperScan(basePackages = " com.dugu.ddd.infra.mw.database.mapper.dugut", sqlSessionTemplateRef = "dugutSqlSessionTemplate")
+@AutoConfigureAfter({DataSourceConfiguration.class})
+@MapperScan(basePackages = "com.dugu.ddd.infra.mw.database.mapper.dugut", sqlSessionTemplateRef = "dugutSqlSessionTemplate")
 public class DugutDataSourceConfig {
 
-    @Value("${spring.datasource.dugut.url}")
-    private String url;
-    @Value("${spring.datasource.dugut.username}")
-    private String username;
-    @Value("${spring.datasource.dugut.password}")
-    private String password;
-    @Value("${spring.datasource.dugut.driver-class-name}")
-    private String className;
-
-    @Bean(name = "dugutDataSource")
-    public DataSource dugutDataSource() {
-        DruidDataSource druidDataSource = new DruidDataSource();
-        druidDataSource.setUrl(url);
-        druidDataSource.setUsername(username);
-        druidDataSource.setPassword(password);
-        druidDataSource.setDriverClassName(className);
-        druidDataSource.setName("dugutDataSource");
-        return druidDataSource;
-    }
-
+    @Autowired
+    private MybatisConfiguration mybatisConfiguration;
 
     @Bean(name = "dugutSqlSessionFactory")
     public SqlSessionFactory dugutSqlSessionFactory(@Qualifier("dugutDataSource") DataSource dataSource) throws Exception {
         MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
         bean.setDataSource(dataSource);
+        bean.setConfiguration(mybatisConfiguration);
         //设置数据源
         bean.setDataSource(dataSource);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/dugut/*xml"));

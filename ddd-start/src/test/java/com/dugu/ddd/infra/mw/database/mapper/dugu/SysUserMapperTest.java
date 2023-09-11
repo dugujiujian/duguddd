@@ -2,11 +2,16 @@ package com.dugu.ddd.infra.mw.database.mapper.dugu;
 
 import com.dugu.ddd.domain.dao.dugu.user.SysUserDO;
 import com.dugu.ddd.domain.dao.dugut.user.TestSysUserDO;
+import com.dugu.ddd.infra.mw.database.DataSourceConfiguration;
+import com.dugu.ddd.infra.mw.database.DbContextHolder;
+import com.dugu.ddd.infra.mw.database.DuguDataSourceConfig;
+import com.dugu.ddd.infra.mw.database.DugutDataSourceConfig;
+import com.dugu.ddd.infra.mw.database.MybatisPlusConfig;
+import com.dugu.ddd.infra.mw.database.aop.DatabaseTransactionAspect;
+import com.dugu.ddd.infra.mw.database.enums.DatabaseCommonEnum;
 import com.dugu.ddd.infra.mw.database.mapper.dugut.TestSysUserMapper;
-import com.dugu.ddd.infra.mw.database.mysql.DuguDataSourceConfig;
-import com.dugu.ddd.infra.mw.database.mysql.DugutDataSourceConfig;
-import com.dugu.ddd.infra.mw.database.mysql.MybatisPlusConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,25 +34,31 @@ public class SysUserMapperTest {
     @Autowired
     private TestSysUserMapper testSysUserMapper;
 
+    @Before
+    public void init(){
+        DbContextHolder.setDefaultDs(DatabaseCommonEnum.DsType.DS_DUGUT.getValue());
+    }
+
     @Test
-    public void testDuguSelectById(){
-        SysUserDO user= sysUserMapper.selectById(1L);
-        if(user!=null){
+    public void testDuguSelectById() {
+        SysUserDO user = sysUserMapper.selectById(1L);
+        if (user != null) {
             System.out.println(user);
         }
     }
 
     @Test
-    public void testDugutSelectById(){
-        TestSysUserDO user= testSysUserMapper.selectById(1L);
-        if(user!=null){
+    public void testDugutSelectById() {
+        TestSysUserDO user = testSysUserMapper.selectById(1L);
+        if (user != null) {
             System.out.println(user);
         }
     }
 
 
     @Configuration
-    @Import(value = {MybatisPlusConfig.class, DuguDataSourceConfig.class, DugutDataSourceConfig.class})
+    @Import(value = {DataSourceConfiguration.class,MybatisPlusConfig.class,
+            DuguDataSourceConfig.class, DugutDataSourceConfig.class, DatabaseTransactionAspect.class})
     static class Config {
 
     }
