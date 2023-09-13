@@ -1,12 +1,10 @@
 package com.dugu.ddd.infra.mw.database;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
-import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -25,9 +23,6 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "com.dugu.ddd.infra.mw.database.mapper.dugut", sqlSessionTemplateRef = "dugutSqlSessionTemplate")
 public class DugutDataSourceConfig {
 
-    @Autowired
-    private MybatisConfiguration mybatisConfiguration;
-
     @Bean(name = "dugutDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.dugut")
     public DataSource dugutDataSource() {
@@ -38,9 +33,7 @@ public class DugutDataSourceConfig {
     public SqlSessionFactory dugutSqlSessionFactory(@Qualifier("dugutDataSource") DataSource dataSource) throws Exception {
         MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setConfiguration(mybatisConfiguration);
         //设置数据源
-        bean.setDataSource(dataSource);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/dugut/*xml"));
         //这个的getResources指向的是你的mapper.xml文件，相当于在yml中配置的mapper-locations，此处配置了yml中就不用配置，或者说不会读取yml中的该配置。
         return bean.getObject();
