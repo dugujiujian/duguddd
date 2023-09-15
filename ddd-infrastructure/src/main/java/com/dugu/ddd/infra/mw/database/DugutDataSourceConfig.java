@@ -23,12 +23,6 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "com.dugu.ddd.infra.mw.database.mapper.dugut", sqlSessionTemplateRef = "dugutSqlSessionTemplate")
 public class DugutDataSourceConfig {
 
-    @Bean(name = "dugutDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.dugut")
-    public DataSource dugutDataSource() {
-        return DruidDataSourceBuilder.create().build();
-    }
-
     @Bean(name = "dugutSqlSessionFactory")
     public SqlSessionFactory dugutSqlSessionFactory(@Qualifier("dugutDataSource") DataSource dataSource) throws Exception {
         MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();

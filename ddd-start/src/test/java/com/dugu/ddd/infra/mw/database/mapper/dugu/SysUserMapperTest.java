@@ -2,6 +2,7 @@ package com.dugu.ddd.infra.mw.database.mapper.dugu;
 
 import com.dugu.ddd.domain.dao.dugu.user.SysUserDO;
 import com.dugu.ddd.domain.dao.dugut.user.TestSysUserDO;
+import com.dugu.ddd.infra.mw.database.DataSourceConfiguration;
 import com.dugu.ddd.infra.mw.database.DugutDataSourceConfig;
 import com.dugu.ddd.infra.mw.database.MybatisPlusConfig;
 import com.dugu.ddd.infra.mw.database.mapper.dugut.TestSysUserMapper;
@@ -13,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.Date;
 
 /**
  * @author cihun
@@ -44,9 +47,23 @@ public class SysUserMapperTest {
         }
     }
 
+    @Test
+    public void transactionTest() {
+        Date date = new Date();
+        SysUserDO sysUserDO = new SysUserDO();
+        sysUserDO.setName("刺魂");
+        sysUserDO.setMobile("13758116709");
+        sysUserDO.setPassword("123456");
+        sysUserDO.setCreateBy(11L);
+        sysUserDO.setUpdateBy(11L);
+        int r = sysUserMapper.insert(sysUserDO);
+    }
+
 
     @Configuration
-    @Import(value = {MybatisPlusConfig.class, com.dugu.ddd.infra.mw.database.mysql.DuguDataSourceConfig.class, DugutDataSourceConfig.class})
+    @Import(value = {MybatisPlusConfig.class, DataSourceConfiguration.class,
+            com.dugu.ddd.infra.mw.database.mysql.DuguDataSourceConfig.class,
+            DugutDataSourceConfig.class})
     static class Config {
 
     }
