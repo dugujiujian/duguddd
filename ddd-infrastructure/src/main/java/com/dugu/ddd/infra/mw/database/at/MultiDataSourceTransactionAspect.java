@@ -1,6 +1,7 @@
 package com.dugu.ddd.infra.mw.database.at;
 
 import javafx.util.Pair;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -22,6 +23,7 @@ import java.util.Stack;
  */
 @Component
 @Aspect
+@Slf4j
 public class MultiDataSourceTransactionAspect {
 
     /**
@@ -62,12 +64,11 @@ public class MultiDataSourceTransactionAspect {
      */
     @Before("pointcut() && @annotation(transactional)")
     public void before(MultiDataSourceTransactional transactional) {
-        System.out.println("===============事务开始===============");
+        log.info("===============事务开始===============");
         // 根据设置的事务名称按顺序声明，并放到ThreadLocal里
         String[] transactionManagerNames = transactional.transactionManagers();
         Stack<Pair<DataSourceTransactionManager, TransactionStatus>> pairStack = new Stack<>();
         for (String transactionManagerName : transactionManagerNames) {
-            //System.out.println("事务名称："+ transactionManagerName);
             DataSourceTransactionManager transactionManager = applicationContext.getBean(transactionManagerName, DataSourceTransactionManager.class);
             TransactionStatus transactionStatus = transactionManager.getTransaction(def);
             pairStack.push(new Pair(transactionManager, transactionStatus));
@@ -85,10 +86,8 @@ public class MultiDataSourceTransactionAspect {
         while (!pairStack.empty()) {
             Pair<DataSourceTransactionManager, TransactionStatus> pair = pairStack.pop();
             pair.getKey().commit(pair.getValue());
-            //System.out.println("提交事务："+ pair.getValue());
         }
         THREAD_LOCAL.remove();
-        //System.out.println("===============事务正常结束===============");
     }
 
     /**
@@ -101,10 +100,9 @@ public class MultiDataSourceTransactionAspect {
         while (!pairStack.empty()) {
             Pair<DataSourceTransactionManager, TransactionStatus> pair = pairStack.pop();
             pair.getKey().rollback(pair.getValue());
-            //System.out.println("回滚事务："+ pair.getValue());
         }
         THREAD_LOCAL.remove();
-        System.out.println("===============事务异常，已回滚===============");
+        log.info("===============事务异常，已回滚===============");
     }
 
 }
