@@ -1,9 +1,13 @@
 package com.dugu.ddd.infra.app.service.user;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.dugu.ddd.domain.dao.dugu.user.SysUserDO;
 import com.dugu.ddd.domain.service.user.UserService;
 import com.dugu.ddd.infra.mw.database.DataSourceConfiguration;
 import com.dugu.ddd.infra.mw.database.DugutDataSourceConfig;
 import com.dugu.ddd.infra.mw.database.MybatisPlusConfig;
+import com.dugu.ddd.infra.mw.database.at.MultiDataSourceTransactionAspect;
+import com.dugu.ddd.infra.mw.database.plugin.MpMetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +17,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author cihun
@@ -28,15 +31,27 @@ public class UserServiceImplTest {
     private UserService userService;
 
 
+
+    @Test
+    public void sysUserPageQuery() {
+        SysUserDO sysUserDO=new SysUserDO();
+        //sysUserDO.setName("刺");
+        IPage<SysUserDO> user=userService.findSysUser(sysUserDO,1,1);
+        System.out.println("总页数： "+user.getPages());
+        System.out.println("总记录数： "+user.getTotal());
+        user.getRecords().forEach(System.out::println);
+    }
+
+
     @Test
     public void transactionTest() {
         userService.transactionTest();
     }
 
     @Configuration
-    @Import(value = {MybatisPlusConfig.class, DataSourceConfiguration.class,
+    @Import(value = {MultiDataSourceTransactionAspect.class,MybatisPlusConfig.class, DataSourceConfiguration.class,
             com.dugu.ddd.infra.mw.database.mysql.DuguDataSourceConfig.class,
-            DugutDataSourceConfig.class})
+            DugutDataSourceConfig.class, MpMetaObjectHandler.class})
     static class Config {
         @Bean
         public UserService userService(){

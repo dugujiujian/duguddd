@@ -25,7 +25,7 @@ public class SysUserDO {
     private Long id;
     @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
-    @TableField(fill = FieldFill.UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
     private Long createBy;
     private Long updateBy;

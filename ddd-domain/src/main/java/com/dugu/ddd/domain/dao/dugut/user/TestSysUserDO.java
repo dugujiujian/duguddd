@@ -17,5 +17,7 @@ import lombok.Data;
 public class TestSysUserDO {
     @TableId(type = IdType.AUTO)
     private Long id;
+    private Long isDeleted;
     private String name;
+    private String sex;
 }
