@@ -67,7 +67,7 @@ public class MultiDataSourceTransactionAspect {
         String[] transactionManagerNames = transactional.transactionManagers();
         Stack<Pair<DataSourceTransactionManager, TransactionStatus>> pairStack = new Stack<>();
         for (String transactionManagerName : transactionManagerNames) {
-            System.out.println("事务名称："+ transactionManagerName);
+            //System.out.println("事务名称："+ transactionManagerName);
             DataSourceTransactionManager transactionManager = applicationContext.getBean(transactionManagerName, DataSourceTransactionManager.class);
             TransactionStatus transactionStatus = transactionManager.getTransaction(def);
             pairStack.push(new Pair(transactionManager, transactionStatus));
@@ -85,10 +85,10 @@ public class MultiDataSourceTransactionAspect {
         while (!pairStack.empty()) {
             Pair<DataSourceTransactionManager, TransactionStatus> pair = pairStack.pop();
             pair.getKey().commit(pair.getValue());
-            System.out.println("提交事务："+ pair.getValue());
+            //System.out.println("提交事务："+ pair.getValue());
         }
         THREAD_LOCAL.remove();
-        System.out.println("===============事务正常结束===============");
+        //System.out.println("===============事务正常结束===============");
     }
 
     /**
@@ -101,7 +101,7 @@ public class MultiDataSourceTransactionAspect {
         while (!pairStack.empty()) {
             Pair<DataSourceTransactionManager, TransactionStatus> pair = pairStack.pop();
             pair.getKey().rollback(pair.getValue());
-            System.out.println("回滚事务："+ pair.getValue());
+            //System.out.println("回滚事务："+ pair.getValue());
         }
         THREAD_LOCAL.remove();
         System.out.println("===============事务异常，已回滚===============");
