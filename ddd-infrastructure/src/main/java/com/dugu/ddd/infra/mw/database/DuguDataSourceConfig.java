@@ -1,4 +1,4 @@
-package com.dugu.ddd.infra.mw.database.mysql;
+package com.dugu.ddd.infra.mw.database;
 
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
@@ -23,7 +23,7 @@ import javax.sql.DataSource;
  * @date 2023-09-08 10:51
  */
 @Configuration
-@MapperScan(basePackages = " com.dugu.ddd.infra.mw.database.mapper.dugu", sqlSessionTemplateRef = "duguSqlSessionTemplate")
+@MapperScan(basePackages = "com.dugu.ddd.infra.mw.database.mapper.dugu", sqlSessionTemplateRef = "duguSqlSessionTemplate")
 public class DuguDataSourceConfig {
 
     @Autowired

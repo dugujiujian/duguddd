@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
  * @author cihun
  * @date 2023-09-05 9:56 上午
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class LockMethodAspect {
 
     private Logger logger = LoggerFactory.getLogger(LockMethodAspect.class);

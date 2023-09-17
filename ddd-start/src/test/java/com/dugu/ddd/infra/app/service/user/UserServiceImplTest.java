@@ -50,7 +50,7 @@ public class UserServiceImplTest {
 
     @Configuration
     @Import(value = {MultiDataSourceTransactionAspect.class,MybatisPlusConfig.class, DataSourceConfiguration.class,
-            com.dugu.ddd.infra.mw.database.mysql.DuguDataSourceConfig.class,
+            com.dugu.ddd.infra.mw.database.DuguDataSourceConfig.class,
             DugutDataSourceConfig.class, MpMetaObjectHandler.class})
     static class Config {
         @Bean

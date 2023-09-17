@@ -124,7 +124,7 @@ public class SysUserMapperTest {
 
     @Configuration
     @Import(value = {MpMetaObjectHandler.class, MybatisPlusConfig.class, DataSourceConfiguration.class,
-            com.dugu.ddd.infra.mw.database.mysql.DuguDataSourceConfig.class,
+            com.dugu.ddd.infra.mw.database.DuguDataSourceConfig.class,
             DugutDataSourceConfig.class})
     static class Config {
 
