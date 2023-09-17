@@ -22,4 +22,46 @@ public class Result<T> extends BaseResult implements Serializable {
      */
     private T data;
 
+    /**
+     * 成功提示
+     *
+     * @param message 消息
+     * @param data    数据
+     * @param <T>     泛对象
+     * @return 泛对象
+     */
+    public static <T> Result<T> success(String message, T data) {
+        Result<T> result = new Result<>();
+        result.setSuccess(true);
+        result.setData(data);
+        result.setMessage(message);
+        return result;
+    }
+
+    /**
+     * 成功提示
+     *
+     * @param message 消息
+     * @param <T>     泛对象
+     * @return 泛对象
+     */
+    public static <T> Result<T> success(String message) {
+        Result<T> result = new Result<>();
+        result.setSuccess(true);
+        result.setMessage(message);
+        return result;
+    }
+
+    /**
+     * 成功提示
+     *
+     * @param <T> 泛对象
+     * @return 泛对象
+     */
+    public static <T> Result<T> success() {
+        Result<T> result = new Result<>();
+        result.setSuccess(true);
+        return result;
+    }
+
 }

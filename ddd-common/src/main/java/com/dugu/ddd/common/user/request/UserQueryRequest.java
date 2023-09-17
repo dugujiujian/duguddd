@@ -1,5 +1,6 @@
 package com.dugu.ddd.common.user.request;
 
+import com.dugu.ddd.common.base.request.BasePageRequest;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,7 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class UserQueryRequest {
+public class UserQueryRequest extends BasePageRequest {
     private static final long serialVersionUID = 3994266217355167834L;
     private String name;
 }
