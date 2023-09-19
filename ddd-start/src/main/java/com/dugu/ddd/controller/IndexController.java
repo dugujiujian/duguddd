@@ -1,4 +1,4 @@
-package com.dugu.ddd.controller.main;
+package com.dugu.ddd.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2021-10-09 6:55 下午
  */
 @RestController
-public class MainController {
+public class IndexController {
 
-    @RequestMapping(value = {"main"})
-    public String main() {
+    @RequestMapping(value = {"index", "/"})
+    public String index() {
         return "hello, spring boot!";
     }
 

@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.XADataSourceAutoConfiguration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+
 /**
  * @author cihun
  */
@@ -22,4 +23,11 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
+//    @PreDestroy
+//    public void preStop() {
+//        System.out.println("DubboShutdownHook do Destroy");
+//        DubboShutdownHook.getDubboShutdownHook().doDestroy();
+//    }
+//
 }
