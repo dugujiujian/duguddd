@@ -1,4 +1,4 @@
-package ddd.infra.mw.statemachine.pfm;
+package com.dugu.ddd.infra.mw.statemachine.pfm;
 
 import org.springframework.context.annotation.Configuration;
 

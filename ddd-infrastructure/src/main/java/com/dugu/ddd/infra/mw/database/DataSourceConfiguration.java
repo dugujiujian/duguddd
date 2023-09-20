@@ -23,14 +23,12 @@ public class DataSourceConfiguration {
     @Bean(name = "duguDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.dugu")
     public DataSource duguDataSource() {
-        DataSource druidDataSource = DruidDataSourceBuilder.create().build();
-        return druidDataSource;
+        return DruidDataSourceBuilder.create().build();
     }
 
     @Bean(name = "dugutDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.dugut")
     public DataSource dugutDataSource() {
-        DataSource druidDataSource = DruidDataSourceBuilder.create().build();
-        return druidDataSource;
+        return DruidDataSourceBuilder.create().build();
     }
 }

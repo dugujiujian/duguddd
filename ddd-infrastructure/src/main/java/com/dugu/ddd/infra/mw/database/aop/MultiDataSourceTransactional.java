@@ -1,4 +1,4 @@
-package com.dugu.ddd.infra.mw.database.at;
+package com.dugu.ddd.infra.mw.database.aop;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

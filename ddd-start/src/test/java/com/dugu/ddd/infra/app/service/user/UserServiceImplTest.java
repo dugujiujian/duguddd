@@ -6,7 +6,7 @@ import com.dugu.ddd.domain.service.user.UserService;
 import com.dugu.ddd.infra.mw.database.DataSourceConfiguration;
 import com.dugu.ddd.infra.mw.database.DugutDataSourceConfig;
 import com.dugu.ddd.infra.mw.database.MybatisPlusConfig;
-import com.dugu.ddd.infra.mw.database.at.MultiDataSourceTransactionAspect;
+import com.dugu.ddd.infra.mw.database.aop.MultiDataSourceTransactionAspect;
 import com.dugu.ddd.infra.mw.database.plugin.MpMetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.dugu.ddd.infra.mw.database.at;
+package com.dugu.ddd.infra.mw.database.aop;
 
 import javafx.util.Pair;
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +53,7 @@ public class MultiDataSourceTransactionAspect {
     /**
      * 切面
      */
-    @Pointcut("execution(* ddd.domain.service.user..*Service.*(..))")
+    @Pointcut("execution(* com.dugu.ddd.domain.service.user..*Service.*(..))")
     public void pointcut() {
     }
 
