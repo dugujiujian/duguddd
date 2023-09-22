@@ -49,6 +49,7 @@
         <p6spy.version>3.8.2</p6spy.version>
         <xxl-job-core.version>2.3.0</xxl-job-core.version>
         <cola-statemachine.version>4.3.1</cola-statemachine.version>
+
         <!-- 测试工具 -->
         <junit.vesion>4.12</junit.vesion>
     </properties>
@@ -223,28 +224,21 @@
                 <version>${mysql-connector-java.version}</version>
                 <scope>runtime</scope>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>com.baomidou</groupId>-->
-<!--                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
-<!--                <version>${mybatis-plus-version}</version>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.baomidou</groupId>-->
+            <!--                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
+            <!--                <version>${mybatis-plus-version}</version>-->
+            <!--            </dependency>-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid-spring-boot-starter.version}</version>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>com.xuxueli</groupId>-->
-<!--                <artifactId>xxl-job-core</artifactId>-->
-<!--                <version>${xxl-job-core.version}</version>-->
-<!--            </dependency>-->
-
-
-            <dependency>
-                <groupId>com.alibaba.cola</groupId>
-                <artifactId>cola-component-statemachine</artifactId>
-                <version>4.3.1</version>
-            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>com.xuxueli</groupId>-->
+            <!--                <artifactId>xxl-job-core</artifactId>-->
+            <!--                <version>${xxl-job-core.version}</version>-->
+            <!--            </dependency>-->
 
             <!-- 测试工具 -->
             <dependency>
