@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @MultiDataSourceTransactional
-    public void transactionTest() {
+    public void saveUser() {
         TestSysUserDO testSysUserDO = new TestSysUserDO();
         testSysUserDO.setName("刺魂33");
         int result = testSysUserMapper.insert(testSysUserDO);

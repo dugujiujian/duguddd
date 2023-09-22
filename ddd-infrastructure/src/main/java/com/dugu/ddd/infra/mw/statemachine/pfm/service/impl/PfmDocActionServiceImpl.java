@@ -35,7 +35,7 @@ public class PfmDocActionServiceImpl implements PfmDocActionService {
     public Action<PfmDocState, PfmDocEvent, PfmDocStateContext> doAction() {
         return (from, to, event, ctx) -> {
             log.info(ctx.getOperator() + " is operating ! from:" + from + " to:" + to + " on:" + event);
-            userService.transactionTest();
+            userService.saveUser();
             NoticeEvent noticeEvent = ctx.getEvent();
             applicationEventPublisher.publishEvent(noticeEvent);
         };

@@ -54,7 +54,7 @@ public class UserController {
     @RequestMapping("/trans")
     @ResponseBody
     public Boolean trans() {
-        userService.transactionTest();
+        userService.saveUser();
         return Boolean.TRUE;
     }
 }

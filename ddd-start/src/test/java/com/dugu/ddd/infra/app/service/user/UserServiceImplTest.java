@@ -46,7 +46,7 @@ public class UserServiceImplTest {
 
     @Test
     public void transactionTest() {
-        userService.transactionTest();
+        userService.saveUser();
     }
 
     @Configuration

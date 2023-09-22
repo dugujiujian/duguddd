@@ -10,7 +10,7 @@ public interface UserService {
     /**
      * 事务测试
      */
-    void transactionTest();
+    void saveUser();
 
     /**
      * 分页查询
