@@ -32,7 +32,7 @@ public class RedisUtilTest {
 
     @Configuration
     @Import(value = {RedisConfig.class, RedisUtil.class, RedisAutoConfiguration.class})
-    static class Config {
+   public static class Config {
     }
 
 

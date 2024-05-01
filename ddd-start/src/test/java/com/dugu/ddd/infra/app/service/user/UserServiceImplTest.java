@@ -4,9 +4,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.dugu.ddd.domain.dao.dugu.user.SysUserDO;
 import com.dugu.ddd.domain.service.user.UserService;
 import com.dugu.ddd.infra.mw.database.DataSourceConfiguration;
+import com.dugu.ddd.infra.mw.database.DuguDataSourceConfig;
 import com.dugu.ddd.infra.mw.database.DugutDataSourceConfig;
 import com.dugu.ddd.infra.mw.database.MybatisPlusConfig;
-import com.dugu.ddd.infra.mw.database.at.MultiDataSourceTransactionAspect;
+import com.dugu.ddd.infra.mw.database.aop.MultiDataSourceTransactionAspect;
 import com.dugu.ddd.infra.mw.database.plugin.MpMetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -45,14 +46,14 @@ public class UserServiceImplTest {
 
     @Test
     public void transactionTest() {
-        userService.transactionTest();
+        userService.saveUser();
     }
 
     @Configuration
     @Import(value = {MultiDataSourceTransactionAspect.class,MybatisPlusConfig.class, DataSourceConfiguration.class,
-            com.dugu.ddd.infra.mw.database.DuguDataSourceConfig.class,
+            DuguDataSourceConfig.class,
             DugutDataSourceConfig.class, MpMetaObjectHandler.class})
-    static class Config {
+   public static class Config {
         @Bean
         public UserService userService(){
             return new UserServiceImpl();

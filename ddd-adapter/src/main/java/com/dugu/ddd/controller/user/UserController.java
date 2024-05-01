@@ -6,6 +6,11 @@ import com.dugu.ddd.common.user.ContactInfoDTO;
 import com.dugu.ddd.common.user.UserDTO;
 import com.dugu.ddd.common.user.request.UserQueryRequest;
 import com.dugu.ddd.domain.service.user.UserService;
+import com.dugu.ddd.infra.mw.message.NoticeEvent;
+import com.dugu.ddd.infra.mw.statemachine.pfm.PfmDocEvent;
+import com.dugu.ddd.infra.mw.statemachine.pfm.PfmDocState;
+import com.dugu.ddd.infra.mw.statemachine.pfm.PfmDocStateContext;
+import com.dugu.ddd.infra.mw.statemachine.pfm.service.PfmDocEventFireService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -26,6 +32,8 @@ public class UserController {
 
     @Resource
     private UserService userService;
+    @Resource
+    private PfmDocEventFireService pfmDocEventFireService;
 
     @ResponseBody
     public Result<Boolean> save() {
@@ -54,7 +62,21 @@ public class UserController {
     @RequestMapping("/trans")
     @ResponseBody
     public Boolean trans() {
-        userService.transactionTest();
+        userService.saveUser();
+        return Boolean.TRUE;
+    }
+
+    @RequestMapping("/state")
+    @ResponseBody
+    public Boolean state() {
+        PfmDocStateContext ctx=PfmDocStateContext.builder()
+                .event(new NoticeEvent())
+                .operator(1L)
+                .operateTime(new Date())
+                .lockKey("kkk")
+                .docId("1")
+                .build();
+        pfmDocEventFireService.fire(PfmDocState.PREPARE, PfmDocEvent.PLAN_START,ctx);
         return Boolean.TRUE;
     }
 }

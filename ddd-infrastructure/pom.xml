@@ -15,6 +15,10 @@
     <dependencies>
         <dependency>
             <groupId>com.dugu.ddd</groupId>
+            <artifactId>ddd-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dugu.ddd</groupId>
             <artifactId>ddd-domain</artifactId>
         </dependency>
         <dependency>

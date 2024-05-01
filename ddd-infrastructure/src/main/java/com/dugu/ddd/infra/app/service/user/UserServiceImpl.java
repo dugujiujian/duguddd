@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dugu.ddd.domain.dao.dugu.user.SysUserDO;
 import com.dugu.ddd.domain.dao.dugut.user.TestSysUserDO;
 import com.dugu.ddd.domain.service.user.UserService;
-import com.dugu.ddd.infra.mw.database.at.MultiDataSourceTransactional;
+import com.dugu.ddd.infra.mw.database.aop.MultiDataSourceTransactional;
 import com.dugu.ddd.infra.mw.database.mapper.dugu.SysUserMapper;
 import com.dugu.ddd.infra.mw.database.mapper.dugut.TestSysUserMapper;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @MultiDataSourceTransactional
-    public void transactionTest() {
+    public void saveUser() {
         TestSysUserDO testSysUserDO = new TestSysUserDO();
         testSysUserDO.setName("刺魂33");
         int result = testSysUserMapper.insert(testSysUserDO);
