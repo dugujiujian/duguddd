@@ -53,7 +53,7 @@ public class MultiDataSourceTransactionAspect {
     /**
      * 切面
      */
-    @Pointcut("execution(* ddd.domain.service.user..*Service.*(..))")
+    @Pointcut("execution(* com.dugu.ddd.domain.service.user..*Service.*(..))")
     public void pointcut() {
     }
 
