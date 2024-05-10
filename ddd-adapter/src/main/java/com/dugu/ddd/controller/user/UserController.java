@@ -43,12 +43,14 @@ public class UserController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public PageResult<UserDTO> list(@RequestBody UserQueryRequest request) {
+    public PageResult<UserDTO> list() {
         List<UserDTO> data = new ArrayList<>();
         UserDTO userDTO = new UserDTO();
         userDTO.setName("刺魂");
         userDTO.setSex("F");
-
+        UserQueryRequest request=new UserQueryRequest();
+        request.setPageIndex(1);
+        request.setPageSize(10);
         ContactInfoDTO contactInfoDTO = new ContactInfoDTO();
         contactInfoDTO.setEmail("zhaohaihua@163.com");
         contactInfoDTO.setTelephone("0571-82783811");
