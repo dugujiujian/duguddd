@@ -127,6 +127,12 @@
                 <artifactId>dugu-tools</artifactId>
                 <version>${dugu-tools.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.dugu.base</groupId>
+                <artifactId>dugu-open-base</artifactId>
+                <version>${dugu-tools.version}</version>
+            </dependency>
+
 
             <!-- outer toolkit -->
             <dependency>

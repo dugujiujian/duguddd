@@ -7,9 +7,4 @@ package com.dugu.ddd.common.utils;
 public class MainUtil {
 
 
-    /**
-     * 默认页码
-     */
-    public  static Integer DEFAULT_PAGE_SIZE = 10;
-
 }

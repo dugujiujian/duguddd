@@ -1,6 +1,6 @@
 package com.dugu.ddd.common.user.request;
 
-import com.dugu.ddd.common.base.request.BasePageRequest;
+import com.dugu.base.open.result.BasePageRequest;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

@@ -1,7 +1,7 @@
-package com.dugu.ddd.controller.user;
+package com.dugu.ddd.controller.biz.user;
 
+import com.dugu.base.open.result.PageResult;
 import com.dugu.base.open.result.Result;
-import com.dugu.ddd.common.base.result.PageResult;
 import com.dugu.ddd.common.user.ContactInfoDTO;
 import com.dugu.ddd.common.user.UserDTO;
 import com.dugu.ddd.common.user.request.UserQueryRequest;
