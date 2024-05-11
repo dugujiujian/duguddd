@@ -34,6 +34,12 @@
             <artifactId>ddd-infrastructure</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.dugu.base</groupId>
+            <artifactId>dugu-tools</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

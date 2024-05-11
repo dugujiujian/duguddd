@@ -1,7 +1,7 @@
 package com.dugu.ddd.controller.user;
 
+import com.dugu.base.open.result.Result;
 import com.dugu.ddd.common.base.result.PageResult;
-import com.dugu.ddd.common.base.result.Result;
 import com.dugu.ddd.common.user.ContactInfoDTO;
 import com.dugu.ddd.common.user.UserDTO;
 import com.dugu.ddd.common.user.request.UserQueryRequest;
@@ -11,7 +11,6 @@ import com.dugu.ddd.infra.mw.statemachine.pfm.PfmDocEvent;
 import com.dugu.ddd.infra.mw.statemachine.pfm.PfmDocState;
 import com.dugu.ddd.infra.mw.statemachine.pfm.PfmDocStateContext;
 import com.dugu.ddd.infra.mw.statemachine.pfm.service.PfmDocEventFireService;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;

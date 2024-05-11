@@ -27,6 +27,8 @@
         <maven-resources-plugin>3.1.0</maven-resources-plugin>
         <pring-boot-maven-plugin.verion>2.3.7.RELEASE</pring-boot-maven-plugin.verion>
         <!--spring-->
+        <!--  inner toolkit -->
+        <dugu-tools.version>1.0.0-SNAPSHOT</dugu-tools.version>
 
         <!-- outer toolkit -->
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
@@ -116,6 +118,14 @@
                 <groupId>com.dugu.ddd</groupId>
                 <artifactId>ddd-start</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <!-- inner toolkit -->
+
+            <dependency>
+                <groupId>com.dugu.base</groupId>
+                <artifactId>dugu-tools</artifactId>
+                <version>${dugu-tools.version}</version>
             </dependency>
 
             <!-- outer toolkit -->
