@@ -1,4 +1,4 @@
-package com.dugu.ddd.controller;
+package com.dugu.ddd.controller.biz;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -19,7 +19,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-public class UserDTO implements Serializable {
+public class UserDto implements Serializable {
 
     private static final long serialVersionUID = -1014197574966810100L;
     /**
@@ -33,5 +33,5 @@ public class UserDTO implements Serializable {
     /**
      * 联系信息
      */
-    private ContactInfoDTO contactInfo;
+    private ContactInfoDto contactInfo;
 }

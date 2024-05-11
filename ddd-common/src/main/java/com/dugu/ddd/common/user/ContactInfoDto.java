@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-public class ContactInfoDTO implements Serializable {
+public class ContactInfoDto implements Serializable {
     private static final long serialVersionUID = -8230510503104730864L;
     /**
      * 电话

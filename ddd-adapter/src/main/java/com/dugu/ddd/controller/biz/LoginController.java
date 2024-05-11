@@ -1,4 +1,4 @@
-package com.dugu.ddd.controller;
+package com.dugu.ddd.controller.biz;
 
 import com.dugu.ddd.domain.dto.request.LoginUserReq;
 import org.springframework.stereotype.Controller;

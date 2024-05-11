@@ -2,8 +2,8 @@ package com.dugu.ddd.controller.biz.user;
 
 import com.dugu.base.open.result.PageResult;
 import com.dugu.base.open.result.Result;
-import com.dugu.ddd.common.user.ContactInfoDTO;
-import com.dugu.ddd.common.user.UserDTO;
+import com.dugu.ddd.common.user.ContactInfoDto;
+import com.dugu.ddd.common.user.UserDto;
 import com.dugu.ddd.common.user.request.UserQueryRequest;
 import com.dugu.ddd.domain.service.user.UserService;
 import com.dugu.ddd.infra.mw.message.NoticeEvent;
@@ -42,15 +42,15 @@ public class UserController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public PageResult<UserDTO> list() {
-        List<UserDTO> data = new ArrayList<>();
-        UserDTO userDTO = new UserDTO();
+    public PageResult<UserDto> list() {
+        List<UserDto> data = new ArrayList<>();
+        UserDto userDTO = new UserDto();
         userDTO.setName("刺魂");
         userDTO.setSex("F");
         UserQueryRequest request=new UserQueryRequest();
         request.setPageIndex(1);
         request.setPageSize(10);
-        ContactInfoDTO contactInfoDTO = new ContactInfoDTO();
+        ContactInfoDto contactInfoDTO = new ContactInfoDto();
         contactInfoDTO.setEmail("zhaohaihua@163.com");
         contactInfoDTO.setTelephone("0571-82783811");
         userDTO.setContactInfo(contactInfoDTO);
