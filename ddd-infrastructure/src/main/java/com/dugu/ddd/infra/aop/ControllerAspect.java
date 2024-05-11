@@ -57,7 +57,14 @@ public class ControllerAspect {
             return result;
         } catch (Throwable t) {
             status = false;
-            ERROR_LOG.error("args:{}, exception:{}", JSON.toJSONString(args), t);
+            String argsStr = "-";
+            if (args != null) {
+                argsStr = JSON.toJSONString(args);
+                if (containPasswordKey(argsStr)) {
+                    argsStr = "-";
+                }
+            }
+            ERROR_LOG.error("args:{}", argsStr, t);
             result = new Result<>(ResultCodeCommon.SERVER_ERROR);
             return result;
         } finally {
@@ -76,9 +83,19 @@ public class ControllerAspect {
         if (result != null) {
             resultStr = JSON.toJSONString(result);
         }
-        SERVICE_LOG.info("{}|{}|{}|{}|{}", method.getDeclaringClass().getName() + "." + method.getName(), cost + "ms", status,
-                argStr.length() > LoggerConst.LOG_MAX_CONTENT_SIZE ? argStr.substring(0, LoggerConst.LOG_MAX_CONTENT_SIZE) : argStr,
-                resultStr.length() > LoggerConst.LOG_MAX_CONTENT_SIZE ? resultStr.substring(0, LoggerConst.LOG_MAX_CONTENT_SIZE) : resultStr);
+        argStr = argStr.length() > LoggerConst.LOG_MAX_CONTENT_SIZE ? argStr.substring(0, LoggerConst.LOG_MAX_CONTENT_SIZE) : argStr;
+        resultStr = resultStr.length() > LoggerConst.LOG_MAX_CONTENT_SIZE ? resultStr.substring(0, LoggerConst.LOG_MAX_CONTENT_SIZE) : resultStr;
+        if (containPasswordKey(argStr)) {
+            argStr = "-";
+        }
+        SERVICE_LOG.info("{}|{}|{}|{}|{}", method.getDeclaringClass().getName() + "." + method.getName(), cost + "ms", status, argStr, resultStr);
+    }
+
+    private boolean containPasswordKey(String args) {
+        if (args != null && args.contains(LoggerConst.PASS_MASK)) {
+            return true;
+        }
+        return false;
     }
 
 }
