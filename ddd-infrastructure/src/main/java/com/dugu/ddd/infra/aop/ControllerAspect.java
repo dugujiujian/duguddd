@@ -35,7 +35,7 @@ public class ControllerAspect {
     /**
      *
      */
-    @Pointcut("execution(public * com.dugu.ddd.controller.biz..*.*(..))")
+    @Pointcut("execution(public * com.dugu.ddd.controller..*.*(..))")
     public void controller() {
     }
 

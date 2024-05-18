@@ -52,6 +52,11 @@
         <xxl-job-core.version>2.3.0</xxl-job-core.version>
         <cola-statemachine.version>4.3.1</cola-statemachine.version>
 
+        <shiro.version>1.7.1</shiro.version>
+        <java-jwt.version>3.11.0</java-jwt.version>
+
+        <itext.version>7.2.5</itext.version>
+
         <!-- 测试工具 -->
         <junit.vesion>4.12</junit.vesion>
     </properties>
@@ -59,11 +64,11 @@
     <modules>
         <module>ddd-adapter</module>
         <module>ddd-api</module>
-        <module>ddd-application</module>
         <module>ddd-domain</module>
         <module>ddd-infrastructure</module>
         <module>ddd-start</module>
         <module>ddd-common</module>
+        <module>ddd-application</module>
     </modules>
 
     <dependencies>
@@ -195,6 +200,13 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons.lang3.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>1.19</version>
+            </dependency>
+
+
             <!--
                 Guava工程包含了若干被Google的Java项目广泛依赖的核心库. 集合[collections] 、缓存[caching] 、原生类型支持[primitives support] 、
                 并发库[concurrency libraries] 、通用注解[common annotations] 、字符串处理[string processing] 、I/O 等等。
@@ -261,6 +273,34 @@
             <!--                <version>${xxl-job-core.version}</version>-->
             <!--            </dependency>-->
 
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring-boot-starter</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>1.7.1</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${java-jwt.version}</version>
+            </dependency>
+            <!-- 集成swagger接口文档 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.7.0</version>
+            </dependency>
+            <!-- swagger-ui -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>1.6.2</version>
+            </dependency>
             <!-- 测试工具 -->
             <dependency>
                 <groupId>junit</groupId>
@@ -268,6 +308,52 @@
                 <version>${junit.vesion}</version>
                 <scope>test</scope>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>kernel</artifactId>
+                <version>${itext.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>io</artifactId>
+                <version>${itext.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>layout</artifactId>
+                <version>${itext.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>forms</artifactId>
+                <version>${itext.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>pdfa</artifactId>
+                <version>${itext.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>font-asian</artifactId>
+                <version>${itext.version}</version>
+            </dependency>
+            <!-- pdfHTML -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>html2pdf</artifactId>
+                <version>4.0.5</version>
+            </dependency>
+
+            <!-- iText 7 License Key Library -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itext-licensekey</artifactId>
+                <version>2.0.4</version>
+            </dependency>
+            <!-- itext-end -->
 
         </dependencies>
     </dependencyManagement>

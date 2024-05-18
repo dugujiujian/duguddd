@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <link rel="icon" href="https://www.baidu.com/img/flexible/logo/pc/result@2.png" type="image/x-icon">
+</head>
+<body>
+<form action="">
+  用户名：<input type="text" id="username" name="username"/>
+  密码：<input type="password" id="password" name="password"/>
+  <!--<input type="submit" name="登录"/>-->
+</form>
+<button onclick="login()">登录</button>
+<script>
+
+  function login(){
+    //获取用户输入参数
+    //jquery ajax获取input输入的内容
+    var opt={username:$("#username").val(),
+      password:$("#password").val()};
+    console.log(JSON.stringify(opt))
+    //提交ajax请求
+    $.ajax({
+      type : "POST",
+      //请求的媒体类型
+      contentType: "application/json;charset=UTF-8",
+      //请求地址
+      url : "/logon",
+      //数据，json字符串
+      data : JSON.stringify(opt),
+      //请求成功
+      success : function(result) {
+        if(result=="USER_NOT_EXIST"){
+          alert("用户不存在")
+        }
+        else if(result=="ACCOUNT_OLD"){
+          alert("账号已被冻结，请联系管理员")
+        }
+        else if(result=="PASSWORD_ERR"){
+          alert("密码输入有误")
+        }
+        else{
+          window.location.href="/";
+        }
+      },
+      //请求失败，包含具体的错误信息
+      error : function(e){
+        console.log(e.status);
+        console.log(e.responseText);
+      }
+    });
+  }
+
+
+
+</script>
+</body>
+</html>

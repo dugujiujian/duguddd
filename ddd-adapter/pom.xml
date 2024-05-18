@@ -33,11 +33,19 @@
             <groupId>com.dugu.ddd</groupId>
             <artifactId>ddd-infrastructure</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.dugu.ddd</groupId>
+            <artifactId>ddd-application</artifactId>
+        </dependency>
 
 
         <dependency>
             <groupId>com.dugu.base</groupId>
             <artifactId>dugu-tools</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dugu.ddd</groupId>
+            <artifactId>ddd-application</artifactId>
         </dependency>
 
     </dependencies>
