@@ -19,4 +19,9 @@ public class MainController {
 
 
 
+    @GetMapping("/auth/verify-code")
+    public String verifyCode() {
+        return "login";
+    }
+
 }
