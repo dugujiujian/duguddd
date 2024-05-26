@@ -19,7 +19,7 @@ public class LoginController {
     @Autowired
     private UserManager userManager;
 
-    @PostMapping("/logon")
+    @PostMapping("/v1/auth/logon")
     public Result<String> logon(@RequestBody UserLoginReq userLoginReq) {
         userManager.login(userLoginReq.getUsername(), userLoginReq.getPassword());
         return Result.success();

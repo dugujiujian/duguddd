@@ -25,4 +25,12 @@ public class UserLoginReq implements Serializable {
      * 密码
      */
     private String password;
+    /**
+     * 登录类型
+     */
+    private String type;
+    /**
+     * 验证码
+     */
+    private String verifyCode;
 }
